@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+.box{
+
+  display:grid ;
+
+  grid-template-columns: repeat(3,100px);
+  grid-template-rows :repeat(3,100px);
+justify-content: center;
+text-align: center;
+font-size: 30px;
+background-color: aqua;
+max-width: max-content;
+margin: auto;
+}
+.box>div{
+
+  border: 1px solid black;
+  padding-top: 25px;
+
+}
+#info{
+
+width: 100%;
+
+text-align: center;
+
+}
+#second{
+
+width: 100%;
+background-color: azure;
+text-align: center;
+
+
+}
+#resetbutton,#winner{
+  margin: auto;
+}
+
+</style>
+<body>
+  
+<section id="info">
+  <h1>TiC TAC TOE</h1>
+
+  <h2 id="turn">Now player One's turn</h2>
+</section>
+
+
+<div id="second">
+
+  <section class="box">
+
+    <div class="game" id="one"></div>
+    <div class="game" id="two"></div>
+    <div class="game" id="three"></div>
+    <div class="game" id="four"></div>
+    <div class="game" id="five"></div>
+    <div class="game" id="six"></div>
+    <div class="game" id="seven"></div>
+    <div class="game" id="eight"></div>
+    <div class="game" id="nine"></div>
+    
+    
+    </section>
+      
+    
+    <h1 id="winner"></h1>
+    <br>
+    <br>
+    <button id="resetbutton">Reset</button>
+
+</div>
+
+
+
+</body>
+</html>
+
+
+<script>
+
+let count=0
+
+
+document.getElementsByClassName("box")[0].addEventListener("click",(e)=>{
+
+
+if(count%2==0)
+{
+
+e.target.innerHTML=0
+
+document.getElementById("turn").innerHTML="Player Two's Turn"
+}
+if(count%2==1)
+{
+
+e.target.innerHTML=1
+document.getElementById("turn").innerHTML="Player One's Turn"
+
+
+}
+count++
+checkwinner()
+})
+
+
+
+
+
+
+function checkwinner()
+{
+let one=document.getElementById("one").innerHTML
+let two=document.getElementById("two").innerHTML
+let three=document.getElementById("three").innerHTML
+let four=document.getElementById("four").innerHTML
+let five=document.getElementById("five").innerHTML
+let six=document.getElementById("six").innerHTML
+let seven=document.getElementById("seven").innerHTML
+let eight=document.getElementById("eight").innerHTML
+let nine=document.getElementById("nine").innerHTML
+
+
+if( one==1 && two==1 && three==1)
+{
+
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+}
+else if(one==="0" && two==="0" && three==="0")
+{
+  document.getElementById("winner").innerHTML="Player 1 won the match"
+  document.querySelector(".box").style.display="none"
+
+}
+if( one==1 && four==1 && seven==1)
+{
+
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+}
+else if(one==="0" && four==="0" && seven==="0")
+{
+  document.getElementById("winner").innerHTML="Player 1 won the match"
+  document.querySelector(".box").style.display="none"
+
+}
+if( two==1 && five==1 && eight==1)
+{
+
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+}
+else if(two==="0" && five==="0" && eight==="0")
+{
+  document.getElementById("winner").innerHTML="Player 1 won the match"
+  document.querySelector(".box").style.display="none"
+
+}
+
+if( three==1 && six==1 && nine==1)
+{
+
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+}
+else if(three==="0" && six==="0" && nine==="0")
+{
+  document.getElementById("winner").innerHTML="Player 1 won the match"
+  document.querySelector(".box").style.display="none"
+
+}
+
+else if(one==1 && five==1 && nine==1  ||  three==1 && five==1 && seven ==1) 
+{
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+
+}
+
+else if(one==="0" && five==="0" && nine==="0"  ||  three==="0" && five==="0" && seven ==="0") 
+{
+  document.getElementById("winner").innerHTML="Player 2 won the match"
+  document.querySelector(".box").style.display="none"
+ 
+
+}
+
+
+
+
+
+
+}
+
+
+
+function resetthebox()
+{
+
+let box=  document.getElementsByClassName("box")[0]
+
+box.style.display="grid"
+
+
+let mybox=document.querySelectorAll(".game")
+mybox.forEach((e)=>{
+
+e.innerHTML=""
+
+})
+
+document.getElementById("turn").innerHTML="Now players Ones'turn"
+document.getElementById("winner").innerHTML=""
+
+}
+
+
+document.getElementById("resetbutton").addEventListener("click",resetthebox)
+
+</script>
